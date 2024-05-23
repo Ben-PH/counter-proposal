@@ -1,6 +1,6 @@
 [package]
 name = "counters"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 categories = ["embedded", "hardware-support", "no-std"]
 description = " A Hardware Abstraction Layer (HAL) for embedded counters"

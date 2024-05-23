@@ -1,7 +1,5 @@
 #![no_std]
 
-use core::ops::Mul;
-
 pub trait Duration {}
 impl Duration for u32 {}
 impl Duration for u64 {}
@@ -24,10 +22,8 @@ pub trait TimeCount: Sized {
     ///
     /// META: This might merit being a const instead.
     /// META: Should it also be documented about the Mul constraint?
-    type TickMeasure: Mul<Self::RawData, Output = Self::TimeMeasure> + Default;
+    type TickMeasure;
 
-    /// A combinasion of raw count and measure. 80k ticks with 80MHz => 1 second.
-    type TimeMeasure;
 
     type Error;
 
@@ -35,7 +31,5 @@ pub trait TimeCount: Sized {
     fn try_now_raw(&self) -> Result<Self::RawData, Self::Error>;
 
     /// Interprates the tick-count of `try_now_raw`, and scales based on `TickMeasure`
-    fn try_now(&self) -> Result<Self::TimeMeasure, Self::Error> {
-        Ok(Self::TickMeasure::default() * self.try_now_raw()?)
-    }
+    fn try_now(&self) -> Result<Self::TickMeasure, Self::Error>;
 }
