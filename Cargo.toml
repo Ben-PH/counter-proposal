@@ -1,0 +1,12 @@
+[package]
+name = "counters"
+version = "0.0.1"
+edition = "2021"
+categories = ["embedded", "hardware-support", "no-std"]
+description = " A Hardware Abstraction Layer (HAL) for embedded counters"
+rust-version = "1.60"
+keywords = ["hal", "no-std", "time"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
